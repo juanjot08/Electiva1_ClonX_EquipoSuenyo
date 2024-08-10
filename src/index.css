@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,700&display=swap');
+
+:root {
+  --primary-color: #146600;
+  --primary-light: #006635;
+  --black: #000;
+  --white: #FFFFFF;
+
+  --error-color: #FF3D3D;
+  --warning-color: #FF5;
+  --information-color: ##3076a6;
+  --success-color: #46CE7C;
+
+  --primary-400: #146600;
+  --primary-300: #006635;
+  --primary-250: #006612;
+  --primary-200: #3F6600;
+  --primary-150: #006657;
+
+  --secondary-900: #D9D900;
+  --secondary-800: #E0E000;
+  --secondary-700: #E8E800;
+  --secondary-600: #F0F000;
+  --secondary-500: #F7F700;
+  --secondary-400: #FFF200;
+  --secondary-300: #FFFA2A;
+  --secondary-250: #FF5;
+  --secondary-200: #FFFF7F;
+  --secondary-150: #FFFFA9;
+  --secondary-100: #FFFFD4;
+
+  --tertiary-900: #800000;
+  --tertiary-800: #900;
+  --tertiary-700: #B30000;
+  --tertiary-600: #C00;
+  --tertiary-500: #E6060F;
+  --tertiary-400: #ED1C24;
+  --tertiary-300: #FF252D;
+  --tertiary-250: #FF3D3D;
+  --tertiary-200: #FF5C5C;
+  --tertiary-150: #FF7A7A;
+  --tertiary-100: #F99;
+
+  --support-900: #5B5D77;
+  --support-800: #6F718D;
+  --support-700: #8386A3;
+  --support-600: #989BB8;
+  --support-500: #AEB0CC;
+  --support-400: #C4C6E0;
+  --support-300: #CBCDE7;
+  --support-250: #D3D5EE;
+  --support-200: #DCDEF3;
+  --support-150: #E6E7F8;
+  --support-100: #F0F1FC;
+
+  --neutral-900: #000;
+  --neutral-800: #080808;
+  --neutral-700: #0F0F0F;
+  --neutral-650: #171717;
+  --neutral-600: #1E1E1E;
+  --neutral-500: #393939;
+  --neutral-400: #555;
+  --neutral-300: #707070;
+  --neutral-250: #8B8B8B;
+  --neutral-200: #A6A6A6;
+  --neutral-150: #C2C2C2;
+  --neutral-100: #DDD;
+  --neutral-50: #F8F8F8;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body,
+#root {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box !important;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden !important;
+}
+
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
+}
+
+/* Font Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+label,
+table {
+  font-family: Poppins;
+}
+
+h1 {
+  font-size: 3.812rem;
+  padding: calc(3.812rem - 10px) 0px;
+}
+
+h2 {
+  font-size: 3.062rem;
+  padding: calc(3.062rem - 10px) 0px;
+}
+
+h3 {
+  font-size: 2.438rem;
+  padding: calc(2.438rem - 10px) 0px;
+}
+
+h4 {
+  font-size: 1.938rem;
+  padding: calc(1.938rem - 10px) 0px;
+}
+
+h5 {
+  font-size: 1.562rem;
+  padding: calc(1.562rem - 10px) 0px;
+}
+
+h6 {
+  font-size: 1.250rem;
+  padding: calc(1.250rem - 10px) 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+  color: var(--primary-color);
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 3.625rem;
+}
+
+p {
+  color: var(--black);
+}
+
+a {
+  color: var(--primary-light);
+}
+
+p,
+a {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
