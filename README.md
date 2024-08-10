@@ -4,7 +4,7 @@
 - [Sebastian Hernandez](https://github.com/sebasrpg1232)
 - [Carlos Guillent](https://github.com/cariuss)
 - [Juan Tellez](https://github.com/juanjot08)
-- 
+
 ## Tecnología en que se Desarrolló
 - ReactJS
 ## X Social Media Clone
