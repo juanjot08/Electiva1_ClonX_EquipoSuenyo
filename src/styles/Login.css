@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "TwitterFont";
+  src: url("https://abs.twimg.com/fonts/v1/chirp-extended-heavy-web.woff2")
+    format("woff2");
+}
+
+h1,
+h2,
+h3 {
+  color: white;
+  text-align: left;
+}
+
+.container-logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-controls {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-controls h1 {
+  font-family: "TwitterFont";
+  font-size: 60px;
+  text-align: left;
+}
+
+.container-controls h2 {
+  font-family: "TwitterFont";
+  font-size: 30px;
+  text-align: left;
+}
+
+.container-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.container-buttons p {
+  color: white;
+  font-size: x-small;
+  text-align: left;
+}
+
+.container-buttons h3 {
+	font-size: small;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #444;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffffff;
+}
