@@ -1,8 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,700&display=swap');
 
+@font-face {
+  font-family: TwitterChirp;
+  src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Light.3a18e64a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Light.7a5673aa.woff) format('woff');
+  font-weight: 300;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Regular.80fda27a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Regular.60b215ba.woff) format('woff');
+  font-weight: 400;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Medium.f8e2739a.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Medium.20fc288a.woff) format('woff');
+  font-weight: 500;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Bold.ebb56aba.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Bold.a573679a.woff) format('woff');
+  font-weight: 700;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(https://abs.twimg.com/responsive-web/client-web/Chirp-Heavy.f44ae4ea.woff2) format('woff2'), url(https://abs.twimg.com/responsive-web/client-web/Chirp-Heavy.d70ec7ca.woff) format('woff');
+  font-weight: 800;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: TwitterChirpExtendedHeavy;
+  src: url(https://abs.twimg.com/fonts/v1/chirp-extended-heavy-web.woff2) format('woff2'), url(https://abs.twimg.com/fonts/v1/chirp-extended-heavy-web.woff) format('woff');
+  font-weight: 800;
+  font-style: 'normal';
+  font-display: 'swap';
+}
+
 :root {
-  --primary-color: #146600;
-  --primary-light: #006635;
+  background-color: #000;
+  --primary-color: #000000;
+  --primary-light: #FFFFFF;
   --black: #000;
   --white: #FFFFFF;
 
@@ -10,6 +59,7 @@
   --warning-color: #FF5;
   --information-color: ##3076a6;
   --success-color: #46CE7C;
+  --disabled-color: #787a7a;
 
   --primary-400: #146600;
   --primary-300: #006635;
@@ -17,29 +67,13 @@
   --primary-200: #3F6600;
   --primary-150: #006657;
 
-  --secondary-900: #D9D900;
-  --secondary-800: #E0E000;
-  --secondary-700: #E8E800;
-  --secondary-600: #F0F000;
-  --secondary-500: #F7F700;
-  --secondary-400: #FFF200;
-  --secondary-300: #FFFA2A;
-  --secondary-250: #FF5;
-  --secondary-200: #FFFF7F;
-  --secondary-150: #FFFFA9;
-  --secondary-100: #FFFFD4;
+  --primary-light-200: #d7dbdc;
 
-  --tertiary-900: #800000;
-  --tertiary-800: #900;
-  --tertiary-700: #B30000;
-  --tertiary-600: #C00;
-  --tertiary-500: #E6060F;
-  --tertiary-400: #ED1C24;
-  --tertiary-300: #FF252D;
-  --tertiary-250: #FF3D3D;
-  --tertiary-200: #FF5C5C;
-  --tertiary-150: #FF7A7A;
-  --tertiary-100: #F99;
+
+  --secondary-color: #FFFFFF;
+
+  --tertiary-color: #b429b5;
+  --tertiary-light: #da31db;
 
   --support-900: #5B5D77;
   --support-800: #6F718D;
@@ -112,8 +146,10 @@ p,
 a,
 button,
 label,
-table {
-  font-family: Poppins;
+table,
+span,
+a {
+  font-family: TwitterChirp, sans-serif;
 }
 
 h1 {
