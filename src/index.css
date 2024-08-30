@@ -152,65 +152,10 @@ a {
   font-family: TwitterChirp, sans-serif;
 }
 
-h1 {
-  font-size: 3.812rem;
-  padding: calc(3.812rem - 10px) 0px;
-}
-
-h2 {
-  font-size: 3.062rem;
-  padding: calc(3.062rem - 10px) 0px;
-}
-
-h3 {
-  font-size: 2.438rem;
-  padding: calc(2.438rem - 10px) 0px;
-}
-
-h4 {
-  font-size: 1.938rem;
-  padding: calc(1.938rem - 10px) 0px;
-}
-
-h5 {
-  font-size: 1.562rem;
-  padding: calc(1.562rem - 10px) 0px;
-}
-
-h6 {
-  font-size: 1.250rem;
-  padding: calc(1.250rem - 10px) 0px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0px;
-  color: var(--primary-color);
-}
-
-h1 {
-  color: var(--primary-color);
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 3.625rem;
-}
-
 p {
   color: var(--black);
 }
 
 a {
   color: var(--primary-light);
-}
-
-p,
-a {
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
 }

@@ -1,0 +1,19 @@
+.card {
+  background-color: black;
+  color: white;
+  transition-duration: 0.2s;
+  transition-property: background-color, box-shadow;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+	width: 100%;
+}
+
+.clickable{
+	cursor: pointer;
+}
+
+.card:hover {
+  background-color: rgb(47, 47, 47);
+}
