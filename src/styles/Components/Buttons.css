@@ -1,0 +1,118 @@
+.large_button_container {
+    padding: 12px 80px 12px 80px;
+    width: 100%;
+    display: flex;
+}
+
+.button {
+    border-radius: 38px;
+    padding: 0px 32px 0px 32px;
+    min-height: 52px;
+    min-width: 52px;
+    font-size: 17px;
+    font-weight: 700;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+.button:disabled {
+    background-color: var(--disabled-color);
+    color: var(--primary-color);
+    cursor: default;
+    opacity: 1;
+}
+
+.text_button_container {
+    margin: 16;
+}
+
+.primary-button {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-light-200);
+}
+
+.secondary-button {
+    background-color: var(--primary-color);
+    color: var(--primary-light);
+    fill: var(--primary-light);
+    cursor: pointer;
+    border: solid rgb(83, 100, 113);
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+}
+
+.secondary-button:hover {
+    transition-duration: 0.2s;
+    background-color: rgba(239, 243, 244, 0.1);
+}
+
+.tertiary-button {
+    background-color: rgb(29, 155, 240);
+    color: var(--primary-light);
+    fill: var(--primary-light);
+    cursor: pointer;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
+.tertiary-button:hover {
+    transition-duration: 0.2s;
+    background-color: #1a8cd8;
+}
+
+.tertiary-button:disabled {
+    background-color: #0f4e78 !important;
+}
+
+.button>img,
+.circulo>img {
+    width: 28px;
+    height: 28px;
+}
+
+.button_icon_text {
+    margin: 8px;
+}
+
+.circulo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: -4px;
+}
+
+.icon-button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    cursor: pointer;
+    background: none !important;
+    border: 0;
+}
+
+span {
+    color: rgb(113, 118, 123);
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
