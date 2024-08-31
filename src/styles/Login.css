@@ -41,7 +41,7 @@ h3 {
 .container-buttons {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
 }
 
 .container-buttons p {
