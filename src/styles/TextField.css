@@ -1,0 +1,82 @@
+.user-input-wrp {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 80%;
+    height: 23%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.user-input-wrp .inputText {
+    color: white;
+    font-size: 88%;
+    padding-top: 15px;
+    border-radius: .8vh;
+    width: 100%;
+    height: 3.5em;
+    outline: none;
+    border: none;
+    border: .2vh solid rgb(103, 111, 119);
+    background-color: black;
+    box-shadow: none !important;
+}
+
+.inputText:focus {
+    border-color: rgb(29, 155, 240);
+    border-width: medium medium 2px;
+}
+
+.floating-label {
+    display: flex;
+    position: relative;
+    bottom: 25%;
+    margin-left: 2%;
+    color: rgb(113, 118, 123);
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.inputText:focus~.floating-label {
+    bottom: 30%;
+    font-size: 10px;
+    color: rgb(29, 155, 240);
+    font-size: 13px;
+    opacity: 1;
+}
+
+.inputText:not(:focus):valid~.floating-label {
+    bottom: 30%;
+    font-size: 10px;
+    color: rgb(113, 118, 123);
+    font-size: 13px;
+    opacity: 1;
+}
+
+.floating-counter {
+    bottom: 50%;
+    display: flex;
+    position: relative;
+    margin-left: 5px;
+    color: black;
+    top: auto;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.inputText:focus~.floating-counter {
+    bottom: 40%;
+    font-size: 20px;
+    color: rgb(113, 118, 123);
+    font-size: 13px;
+    opacity: 1;
+}
+
+.inputText:not(:focus):valid~.floating-counter {
+    bottom: 65%;
+    font-size: 10px;
+    color: black;
+    font-size: 13px;
+    opacity: 1;
+}
