@@ -1,5 +1,4 @@
 .large_button_container {
-    padding: 12px 80px 12px 80px;
     width: 100%;
     display: flex;
 }
@@ -7,8 +6,8 @@
 .button {
     border-radius: 38px;
     padding: 0px 32px 0px 32px;
-    min-height: 52px;
-    min-width: 52px;
+    min-height: 36px;
+    min-width: 36px;
     font-size: 17px;
     font-weight: 700;
     width: 100%;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/Components/Buttons.css'
 
-export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = "" }) => {
+export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {} }) => {
     return (
         <div className='large_button_container'>
             <button
@@ -10,7 +10,7 @@ export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleTyp
                 onClick={fn}
                 name={name}
                 disabled={isDisabled}
-                style={{ customStyles }}
+                style={ customStyles }
             >
                 {icon && icon()}
                 <div className='text_button_container' style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
