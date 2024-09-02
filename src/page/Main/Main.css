@@ -1,0 +1,9 @@
+.sidebar-container {
+    grid-template-columns: 30% 70%;
+
+}
+
+.sidebar-container:first-child {
+    justify-self: end;
+    width: 100%;
+}
