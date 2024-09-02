@@ -15,7 +15,7 @@ import '../styles/Components/Buttons.css'
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = "" }) => {
+export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {} }) => {
     return (
         <div className='large_button_container'>
             <button
