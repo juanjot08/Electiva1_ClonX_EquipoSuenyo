@@ -1,5 +1,6 @@
-import { LargeButton } from "../../../components/Buttons";
 import { AppleIconSVG, GoogleIconSVG } from "../../../components/Images";
+import { LargeButton } from "../../../components/Buttons";
+import { TextField } from "../../../components/TextField";
 
 export const LoginForm = () => {
   return (
@@ -20,7 +21,7 @@ export const LoginForm = () => {
       <div className="divider">
         <span>o</span>
       </div>
-      <input type="text" name="" id="" />
+      <TextField label="Teléfono, correo electrónico o nombre de usuario"/>
       <LargeButton label="Siguiente"></LargeButton>
       <LargeButton label="¿Olvidaste tu contraseña?" styleType="terciary"></LargeButton>
     </>

@@ -1,11 +1,12 @@
 import { LinkTextButton } from "../../../components/Buttons";
+import { TextField } from "../../../components/TextField";
 
 export const SingUpForm = () => {
   return (
     <>
       <h1>Crea tu cuenta</h1>
-      <input type="text" name="" id="" />
-      <input type="text" name="" id="" />
+      <TextField label="Nombre" maxLength={50}/>
+      <TextField label="Teléfono"/>
 
       <LinkTextButton normalText="Usar Correo"></LinkTextButton>
 

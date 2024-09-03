@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../styles/Components/Buttons.css'
+import '../styles/components/Buttons.css'
 /**
  * Componente de botón largo personalizable.
  *
