@@ -76,6 +76,27 @@
     background-color: #0f4e78 !important;
 }
 
+.quaternary-button {
+    background: none;
+    border: none;
+    color: #e7e9ea;
+    cursor: pointer;
+}
+
+.quaternary-button>svg {
+    color: white;
+
+}
+
+.quaternary-button svg path {
+    fill: currentColor;
+}
+
+.quaternary-button:hover {
+    background: #181818;
+    cursor: pointer;
+}
+
 .button>img,
 .circulo>img {
     width: 28px;
@@ -87,8 +108,6 @@
 }
 
 .circulo {
-    width: 32px;
-    height: 32px;
     border-radius: 50%;
     background-color: none;
     display: flex;
@@ -114,4 +133,10 @@ span {
 
 a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 1250px) {
+    .text_button_container {
+        display: none;
+    }
 }
