@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />}></Route>
         <Route path="/main" element={<Main />}></Route>
-      </Routes>
+      </Routes> 
     </BrowserRouter>
   );
 }
