@@ -1,6 +1,6 @@
 import { ColumnContainer } from "../../components/ColumnContainer";
 import { LargeButton } from "../../components/Buttons";
-import "../../styles/Login.css";
+import "../../styles/pages/Login.css";
 import { GoogleIconSVG, AppleIconSVG } from "../../components/Images";
 import { Modal } from "../../components/Modals";
 import { SingUpForm } from "./components/SingUpForm";

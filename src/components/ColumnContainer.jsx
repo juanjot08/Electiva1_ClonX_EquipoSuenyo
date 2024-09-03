@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/ColumnContainer.css"
+import "../styles/components/ColumnContainer.css"
 
 export const ColumnContainer = ({ gaps, children, customClass }) => {
   return (

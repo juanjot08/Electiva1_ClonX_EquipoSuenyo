@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import "../styles/TextField.css";
+import "../styles/components/TextField.css";
 
-const TextField = ({ setVisibleLabel, label, maxLength, counterDirection }) => {
+export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection }) => {
     const [inputValue, setInputValue] = useState('');
     const [length, setLength] = useState(0);
     const [direction, setDirection] = useState(counterDirection);
@@ -43,5 +43,3 @@ const TextField = ({ setVisibleLabel, label, maxLength, counterDirection }) => {
         </>
     );
 };
-
-export default TextField;
