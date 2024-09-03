@@ -1,0 +1,41 @@
+.sidebar-container {
+    margin-left: 52.5%;
+}
+
+.first-sidebar-button {
+    margin-left: -1%;
+    margin-top: 2%;
+    margin-bottom: 0.6rem;
+}
+
+.sidebar_button {
+    justify-content: start;
+    padding: 12px 12px 12px 14px;
+    display: flex;
+    width: fit-content;
+    gap: 20px;
+    margin-bottom: 0px;
+    margin-left: -5px;
+}
+
+
+
+
+
+@media (max-width: 1980PX) {
+    .sidebar-container {
+        margin-left: 9%;
+    }
+
+    .sidebar_button>div,
+    .first-sidebar-button>div {}
+}
+
+@media (max-width: 1000px) {
+    .sidebar-container {
+        margin-left: 12%;
+    }
+
+    .sidebar_button>div,
+    .first-sidebar-button>div {}
+}
