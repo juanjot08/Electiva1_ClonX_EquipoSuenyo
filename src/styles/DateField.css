@@ -1,0 +1,57 @@
+.user-date-wrp {
+    text-align: left;
+    width: 80%;
+    height: 23%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.inputDate {
+    font-size: 88%;
+    border-radius: .8vh;
+    width: 100%;
+    height: 3.5em;
+    outline: none;
+    border: .2vh solid rgb(103, 111, 119);
+    background-color: black;
+    box-shadow: none !important;
+}
+
+.static-label {
+    top: -45px;
+    left: 2%;
+    color: rgb(113, 118, 123);
+    font-size: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+
+.inputDate:focus {
+    color: white;
+    border-color: rgb(29, 155, 240);
+}
+
+.inputDate:not(:focus) {
+    color: white;
+    border-color: rgb(113, 118, 123);
+}
+
+.user-date-wrp:focus-within .static-label {
+    color: rgb(29, 155, 240);
+}
+
+@media (max-height: 381px) {
+    .user-date-wrp {
+        width: 110%;
+    }
+
+    .inputDate {
+        padding-left: 20%;
+        width: 90%;
+
+    }
+
+}
