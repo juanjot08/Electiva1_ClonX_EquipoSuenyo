@@ -13,7 +13,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <ColumnContainer gaps={["20%", "10%"]}>
+      <ColumnContainer widths={["50%", "50%"]}>
         <div className="container-logo">
           <img src="/images/icon-default-maskable-large.35928fda.png" alt="" />
         </div>
