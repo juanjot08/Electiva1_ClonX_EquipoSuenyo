@@ -16,7 +16,7 @@ import '../styles/components/Buttons.css'
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {}, customClass = "" }) => {
+export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {}, customClass = "", sidebar = false }) => {
     return (
         <div className={`large_button_container`}>
             <button
@@ -28,7 +28,7 @@ export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleTyp
                 style={customStyles}
             >
                 {icon && icon()}
-                <div className='text_button_container' style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
+                <div className={`text_button_container ${sidebar && 'text_button_container_trigger'}`} style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
                     {label}
                 </div>
             </button>

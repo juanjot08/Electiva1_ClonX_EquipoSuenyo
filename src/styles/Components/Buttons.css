@@ -136,7 +136,7 @@ a:hover {
 }
 
 @media (max-width: 1250px) {
-    .text_button_container {
+    .text_button_container_trigger {
         display: none;
     }
 }
