@@ -1,14 +1,14 @@
 import imagen from "/images/fqIKBO06_400x400.jpg"
-import "./Styles.css"
+import "./CardStyles.css"
 import { ThreeDotsIconSVG } from "../../../components/Images";
 import { IconButton, LargeButton } from "../../../components/Buttons";
 import { ProfileIcon } from "../../../components/ProfileIcon";
-const Card = ({ image = imagen, username = "carius", usertag = "@carlitos99", isFollowed = true, isFollowingUser = true }) => {
+const Card = ({ image = imagen, username = "carius", usertag = "@carlitos99", isFollowed = true, isFollowingUser = false }) => {
     return (
         <>
             <div id="card">
                 <div id="card_data_container">
-                    <ProfileIcon imageUrl={imagen} />
+                    <ProfileIcon imageUrl={imagen} large={false} />
                     <div className="card_text_container">
                         <span className="card_username_text">{username}</span>
                         <span>

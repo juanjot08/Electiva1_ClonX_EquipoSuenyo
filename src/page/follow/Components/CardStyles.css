@@ -1,7 +1,7 @@
 #card {
     width: 100%;
     display: grid;
-    grid-template-columns: 85% auto;
+    grid-template-columns: 70% auto;
 }
 
 #card_data_container {
@@ -31,7 +31,7 @@
 }
 
 .card_largebutton_text {
-    padding: 0px;
+    padding: 0px 12px 0px 12px;
 }
 
 #card_actions {
