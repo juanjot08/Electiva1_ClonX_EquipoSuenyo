@@ -13,6 +13,7 @@ import '../styles/components/Buttons.css'
  * @param {boolean} [props.boldText=false] Indica si el texto del boton es con negrilla.
  * @param {string} [props.customStyles=''] Objeto con opciones de estilo adicionales para el botón.
  * @param {string} [props.customClass=''] Clase personalizable de css del boton.
+ * @param {string} [props.sidebar=''] Habilita la accion de desabilitar el texto del boton
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
@@ -115,6 +116,43 @@ export const LinkTextButton = ({ boldText = "", normalText = "", fn = () => cons
                 {boldText && <span style={{ fontWeight: 'bold', color: "white" }}>{boldText + " "}</span>}
                 {normalText && <span>{normalText}</span>}
             </a>
+        </div>
+    )
+}
+
+/**
+ * Componente de botón largo personalizable.
+ *
+ * @param {object} props Propiedades del componente.
+ * @param {string} props.name Nombre del botón (usado para identificarlo y asignarlo a variables).
+ * @param {string} props.label Etiqueta del botón (texto a mostrar).
+ * @param {function(event)} [props.fn] Función a ejecutar cuando se hace clic en el botón. Recibe el evento del clic como parámetro.
+ * @param {boolean} [props.disabled=false] Indica si el botón debe estar deshabilitado (no se podrá hacer clic).
+ * @param {string} [props.styleType='primary'] Indica el estilo de los botones, (primary, secondary, tertiary).
+ * @param {object} [props.icon=''] Le agrega un boton al boton al lado izquierdo.
+ * @param {boolean} [props.boldText=false] Indica si el texto del boton es con negrilla.
+ * @param {string} [props.customStyles=''] Objeto con opciones de estilo adicionales para el botón.
+ * @param {string} [props.customClass=''] Clase personalizable de css del boton.
+ * @param {string} [props.sidebar=''] Habilita la accion de desabilitar el texto del boton
+ *
+ * @returns {JSX.Element} Elemento JSX del componente.
+ */
+export const RectangleButton = ({ name, label = "", fn, isDisabled = false, styleType = "secondary", icon = "", boldText = false, customStyles = {}, customClass = "", sidebar = false }) => {
+    return (
+        <div className={`large_button_container`}>
+            <button
+                className={`button ${styleType}-button ${customClass} rectangle_button_container`}
+                type="button"
+                onClick={fn}
+                name={name}
+                disabled={isDisabled}
+                style={customStyles}
+            >
+                {icon && icon()}
+                <div className={`text_button_container ${sidebar && 'text_button_container_trigger'}`} style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
+                    {label}
+                </div>
+            </button>
         </div>
     )
 }

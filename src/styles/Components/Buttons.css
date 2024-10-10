@@ -140,3 +140,12 @@ a:hover {
         display: none;
     }
 }
+
+.rectangle_button_container {
+    border-radius: 0 !important;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    padding: 14px;
+    color: #71767b;
+}
