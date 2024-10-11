@@ -6,7 +6,7 @@ import SideBar from "../../components/SideBar";
 export const BaseLayout = () => {
   /* el gap del primer dato esta siendo modificado desde la clase en el archivo SideBar.css */
   return (
-    <ColumnContainer gaps={[]} widths={["30%", "70%"]}>
+    <ColumnContainer gaps={["2%"]} widths={["30%", "70%"]}>
       <div className="sidebar-container">
         <SideBar />
       </div>
