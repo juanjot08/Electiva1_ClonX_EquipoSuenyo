@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/components/ColumnContainer.css";
+import "../styles/Components/ColumnContainer.css";
 
 export const ColumnContainer = ({ gaps = [], widths = [], children }) => {
   const gridTemplateColumns = widths.length
