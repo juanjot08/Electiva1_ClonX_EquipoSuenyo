@@ -1,8 +1,13 @@
 import { AppleIconSVG, GoogleIconSVG } from "../../../components/Images";
 import { LargeButton } from "../../../components/Buttons";
 import { TextField } from "../../../components/TextField";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../constants/routes";
 
 export const LoginForm = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>Inicia sesión en X</h1>
@@ -22,7 +27,7 @@ export const LoginForm = () => {
         <span>o</span>
       </div>
       <TextField label="Teléfono o correo electrónico"/>
-      <LargeButton label="Siguiente"></LargeButton>
+      <LargeButton label="Siguiente" fn={() => navigate(routes.home)}></LargeButton>
       <br />
       <LargeButton label="¿Olvidaste tu contraseña?" styleType="quaternary" customStyles={{border: "1px solid white"}}></LargeButton>
     </>

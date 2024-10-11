@@ -1,5 +1,5 @@
-import Post from "./Post";
-import PostInput from "./PostInput";
+import Post from "../../../components/Post.jsx";
+import PostInput from "../../../components/PostInput.jsx";
 import { getPosts } from "../../../services/PostService.js"
 import "../styles/FeedContainer.css"
 

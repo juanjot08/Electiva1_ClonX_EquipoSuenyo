@@ -7,7 +7,7 @@ export const ProfileIcon = ({ imageUrl, large = false }) => {
       className="profile-image-container"
       style={
         large
-          ? { width: "100px", height: "100px" }
+          ? { width: "140px", height: "140px" }
           : { width: "38px", height: "38px" }
       }
     >

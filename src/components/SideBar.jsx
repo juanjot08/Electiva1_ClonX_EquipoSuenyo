@@ -24,7 +24,7 @@ function SideBar() {
     height: window.innerHeight,
   });
 
-  const navigate = useNavigate([]);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -42,14 +42,14 @@ function SideBar() {
     <nav id="sidebar">
       <IconButton
         icon={() => XIconSVG({})}
-        fn={navigate(routes.home)}
+        fn={() => navigate(routes.home)}
         color="white"
         circleLenght="40px"
         customClass="first-sidebar-button"
       />
       <LargeButton
         icon={() => UnfilledHomeIconSVG({})}
-        fn={navigate(routes.home)}
+        fn={() => navigate(routes.home)}
         label="Inicio"
         styleType="quaternary"
         customClass="sidebar_button"
@@ -112,6 +112,7 @@ function SideBar() {
       )}
       <LargeButton
         icon={() => PersonIconSVG({})}
+        fn={() => navigate("Juancho2Jose")}
         label="Perfil"
         styleType="quaternary"
         customClass="sidebar_button"

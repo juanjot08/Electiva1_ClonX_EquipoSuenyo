@@ -1,0 +1,77 @@
+.post-input-container {
+  color: white;
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.img-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.item-control-input {
+  list-style-type: none;
+  margin: 10%;
+  position: relative;
+}
+
+.item-control-input>span {
+  color: rgb(29, 155, 240);
+}
+
+.item-control-input:hover {
+  height: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgba(115, 146, 166, 0.61);
+}
+
+.login-inputText {
+  font-size: 88%;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  word-wrap: break-word;
+  word-break: break-all;
+  border: 2px solid transparent;
+  background-color: black;
+  color: white;
+  outline: none;
+  resize: none;
+}
+
+.login-inputText:focus {
+  border: 2px solid black !important;
+  background-color: black;
+}
+
+.file-item {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.line {
+  width: 100%;
+  background-color: white;
+  height: 1px;
+}
+
+.words-counter {
+  position: relative;
+}
+
+.circular-counter {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: conic-gradient(rgb(29, 155, 240) 0%, transparent 0%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}

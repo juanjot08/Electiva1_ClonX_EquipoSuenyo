@@ -1,5 +1,6 @@
 import { ColumnContainer } from "../../components/ColumnContainer"
 import { FeedContent } from "./components/FeedContent"
+import { Follow } from "../follow/Follow"
 import "../../styles/pages/Home.css"
 
 export const HomePage = () => {
@@ -8,9 +9,8 @@ export const HomePage = () => {
 			<div className="feed-container">
 				<FeedContent />
 			</div>
-			<div  style={{color: "white"}}>
-				<h1>Ensayo</h1>
-				<div>Ensayito</div>
+			<div className="side-information-container" style={{color: "white"}}>
+				
 			</div>
 		</ColumnContainer>
 	)

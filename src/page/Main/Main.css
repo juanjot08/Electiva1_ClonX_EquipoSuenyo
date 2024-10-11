@@ -1,7 +1,9 @@
 .sidebar-container {
   height: 100%;
   display: flex;
-  justify-content: end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
   position: sticky;
   min-height: 100%;
 }
