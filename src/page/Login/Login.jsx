@@ -5,7 +5,7 @@ import { GoogleIconSVG, AppleIconSVG } from "../../components/Images";
 import { Modal } from "../../components/Modals";
 import { SingUpForm } from "./components/SingUpForm";
 import { useState } from "react";
-import { LoginForm } from "./components/LogInForm";
+import { LoginForm } from "./components/LoginForm";
 
 export const LoginPage = () => {
   const [showSingUpModal, setshowSingUpModal] = useState(false);

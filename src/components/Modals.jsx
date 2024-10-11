@@ -1,4 +1,4 @@
-import "../styles/components/Modal.css";
+import "../styles/Components/Modal.css";
 import PropTypes from "prop-types";
 
 export const Modal = ({
