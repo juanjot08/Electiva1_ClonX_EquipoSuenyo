@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../styles/components/TextField.css";
+import "../styles/Components/TextField.css";
 
 export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection }) => {
     const [inputValue, setInputValue] = useState('');

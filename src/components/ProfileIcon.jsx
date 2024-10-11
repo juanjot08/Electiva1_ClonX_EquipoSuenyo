@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "../styles/components/ProfileIcon.css";
+import "../styles/Components/ProfileIcon.css";
 
 export const ProfileIcon = ({ imageUrl, large = false }) => {
   return (
