@@ -1,0 +1,10 @@
+.longDate-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.singUp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,112 @@
+.user-input-wrp {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 80%;
+    height: 23%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.inputText {
+    color: white;
+    font-size: 88%;
+    padding-top: 15px;
+    border-radius: .8vh;
+    width: 100%;
+    height: 3.5em;
+    outline: none;
+    border: .2vh solid rgb(103, 111, 119);
+    background-color: black;
+    box-shadow: none !important;
+}
+
+.floating-label {
+    position: absolute;
+    left: 2%;
+    color: rgb(113, 118, 123);
+    font-size: 16px;
+    bottom: 83%;
+    transform: translateY(50%);
+    transition: all 0.2s ease;
+}
+
+.floating-counter {
+    position: absolute;
+    left: 5px;
+    color: black;
+    font-size: 13px;
+    bottom: 85%;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+}
+
+
+.user-input-wrp:focus-within .floating-label {
+    font-size: 13px;
+    color: rgb(29, 155, 240);
+    transform: translateY(0);
+}
+
+.user-input-wrp:not(:focus-within) .inputText:not(:placeholder-shown)+.floating-label {
+    font-size: 13px;
+    color: rgb(113, 118, 123);
+    transform: translateY(0);
+}
+
+.user-input-wrp:focus-within .floating-counter {
+    font-size: 13px;
+    color: rgb(113, 118, 123);
+    transform: translateY(0);
+}
+
+
+.inputText:focus {
+    border-color: rgb(29, 155, 240);
+}
+
+
+@media (max-height: 550px) {
+
+    .floating-label {
+        bottom: 79% !important;
+    }
+
+    .user-input-wrp:focus-within .floating-label,
+    .user-input-wrp .inputText:not(:placeholder-shown)+.floating-label {
+        bottom: 82% !important;
+    }
+
+
+}
+
+@media (max-height: 461px) {
+
+    .floating-label {
+        bottom: 74% !important;
+    }
+
+    .user-input-wrp:focus-within .floating-label,
+    .user-input-wrp .inputText:not(:placeholder-shown)+.floating-label {
+        bottom: 79% !important;
+    }
+
+}
+
+@media (max-height: 381px) {
+
+    .floating-label {
+        bottom: 69% !important;
+    }
+
+    .user-input-wrp:focus-within .floating-label,
+    .user-input-wrp .inputText:not(:placeholder-shown)+.floating-label {
+        bottom: 74% !important;
+    }
+
+}
+
+/*se van acomodando los medias a las necesidades, por ahora solo están confiduradas básicas, estos medias
+pueden usarse para ajustar los labels dentro de los parametros de las pantallas*/

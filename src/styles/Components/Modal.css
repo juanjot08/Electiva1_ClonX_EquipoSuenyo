@@ -1,0 +1,69 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(91, 112, 131, 0.4);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary-modal {
+  background-color: black;
+  color: white;
+  position: fixed;
+  width: 38rem;
+  height: 41rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 16px;
+}
+
+.controls {
+  height: 53px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  unicode-bidi: isolate;
+}
+
+.modal-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.close-button {
+  cursor: pointer;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+.close-button img {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.close-button:hover{
+  background-color: rgb(47, 47, 47);
+}
