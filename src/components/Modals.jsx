@@ -12,12 +12,12 @@ export const Modal = ({
       <div className="primary-modal">
         <div className="controls">
           <div className="close-button" onClick={onRequestClose}>
-            <img src="/public/icons/icon-close.svg" alt="" />
+            <img src="/icons/icon-close.svg" alt="" />
           </div>
           {hasIcon && (
             <img
               className="modal-icon"
-              src="/public/images/icon-default-maskable-large.35928fda.png"
+              src="/images/icon-default-maskable-large.35928fda.png"
               alt=""
             />
           )}
