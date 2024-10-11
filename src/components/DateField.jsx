@@ -1,9 +1,9 @@
 import React from 'react';
 import "../styles/DateField.css";
 
-const DateField = ({ label, n, data }) => {
+export const DateField = ({ label, n, data = [] }) => {
     return (
-        <div className="user-date-wrp" style={{ width: n + "px" }}>
+        <div className="user-date-wrp" style={{ width: n}}>
             <select name="date" className='inputDate' id="">
                 <option value="" selected disabled></option>
                 {data.map((item) => (
@@ -14,5 +14,3 @@ const DateField = ({ label, n, data }) => {
         </div>
     );
 }
-
-export default DateField;

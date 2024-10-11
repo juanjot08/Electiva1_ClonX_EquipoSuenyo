@@ -19,7 +19,7 @@ import '../styles/components/Buttons.css'
  */
 export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {}, customClass = "", sidebar = false }) => {
     return (
-        <div className={`large_button_container`}>
+        // <div className={`large_button_container`}>
             <button
                 className={`button ${styleType}-button ${customClass}`}
                 type="button"
@@ -33,7 +33,7 @@ export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleTyp
                     {label}
                 </div>
             </button>
-        </div>
+        // </div>
     )
 }
 

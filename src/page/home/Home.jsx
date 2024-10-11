@@ -1,10 +1,17 @@
 import { ColumnContainer } from "../../components/ColumnContainer"
+import { FeedContent } from "./components/FeedContent"
+import "../../styles/pages/Home.css"
 
 export const HomePage = () => {
 	return(
 		<ColumnContainer widths={["50%", "50%"]}>
-			<h1 style={{color: "white"}}>Hola Amigos</h1>
-			<h1  style={{color: "white"}}>Ensayo</h1>
+			<div className="feed-container">
+				<FeedContent />
+			</div>
+			<div  style={{color: "white"}}>
+				<h1>Ensayo</h1>
+				<div>Ensayito</div>
+			</div>
 		</ColumnContainer>
 	)
 }

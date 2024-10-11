@@ -44,7 +44,7 @@ function SideBar() {
         icon={() => XIconSVG({})}
         fn={navigate(routes.home)}
         color="white"
-        circleLenght="50px"
+        circleLenght="40px"
         customClass="first-sidebar-button"
       />
       <LargeButton

@@ -21,9 +21,10 @@ export const LoginForm = () => {
       <div className="divider">
         <span>o</span>
       </div>
-      <TextField label="Teléfono, correo electrónico o nombre de usuario"/>
+      <TextField label="Teléfono o correo electrónico"/>
       <LargeButton label="Siguiente"></LargeButton>
-      <LargeButton label="¿Olvidaste tu contraseña?" styleType="terciary"></LargeButton>
+      <br />
+      <LargeButton label="¿Olvidaste tu contraseña?" styleType="quaternary" customStyles={{border: "1px solid white"}}></LargeButton>
     </>
   );
 };

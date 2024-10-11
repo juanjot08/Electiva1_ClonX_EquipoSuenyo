@@ -31,7 +31,7 @@ export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection 
                 required
                 onChange={handleChange}
                 maxLength={maxLength}
-                placeholder=" " /* set a void placeholder for control of styles */
+                placeholder=" " 
             />
             <span className='floating-label'>{label}</span>
             {setVisibleLabel && (

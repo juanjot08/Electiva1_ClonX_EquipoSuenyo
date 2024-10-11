@@ -1,5 +1,7 @@
 .sidebar-container {
-    height: 100%;
-    display: flex;
-    justify-content: end;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  position: sticky;
+  min-height: 100%;
 }
