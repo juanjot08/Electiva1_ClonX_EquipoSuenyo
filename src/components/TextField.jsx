@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Components/TextField.css";
 
-export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection }) => {
-    const [inputValue, setInputValue] = useState('');
+export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection, password = false, inputValue, setInputValue }) => {
     const [length, setLength] = useState(0);
     const [direction, setDirection] = useState(counterDirection);
 
@@ -26,9 +25,10 @@ export const TextField = ({ setVisibleLabel, label, maxLength, counterDirection 
     return (
         <div className="user-input-wrp">
             <input
-                type="text"
+                type= {password ? "password" : "text" }
                 className="inputText"
                 required
+                value={inputValue}
                 onChange={handleChange}
                 maxLength={maxLength}
                 placeholder=" " 

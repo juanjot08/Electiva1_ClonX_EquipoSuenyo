@@ -4,7 +4,7 @@ import { RectangleButton } from "../../components/Buttons";
 import "./Follow.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { ColumnContainer } from "../../components/ColumnContainer";
-import { getUserInformation } from "../../services/UserService";
+import { getUserInformation } from "../../services/users/UserService";
 
 export const Follow = ({ rute }) => {
   const [displayList, setDisplayList] = useState(rute || "following");

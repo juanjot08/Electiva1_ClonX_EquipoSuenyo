@@ -2,26 +2,48 @@ import { LargeButton, LinkTextButton } from "../../../components/Buttons";
 import { TextField } from "../../../components/TextField";
 import { DateField } from "../../../components/DateField";
 import "../styles/SingUpForm.css";
-import { getDateInfo } from "../../../services/GlobalInformationService";
-import { useState } from "react";
+import { getDateInfo } from "../../../services/common/GlobalInformationService";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../authentication/contexts/AuthContext";
+import { authStrategy, getAuthStrategy } from "../../../services/authentication/authFactory";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../constants/routes";
 
 export const SingUpForm = () => {
   const { days, months, years } = getDateInfo();
 
-  const [email, setEmail] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const navigate = useNavigate();
+
+  const { authState, signUpUser } = useContext(AuthContext);
+
+  const handleAuth = async (authType) => {
+    try {
+      const strategy = getAuthStrategy(authType);
+
+      await signUpUser(strategy, email, password, name);
+
+      if(authState.logged)
+        navigate(routes.home);
+
+    } catch (error) {
+      console.error('Authentication failed:', error);
+    }
+  };
 
   return (
     <>
       <div className="singUp-content">
         <h1>Crea tu cuenta</h1>
-        <TextField label="Nombre" maxLength={50} />
+        <TextField label="Nombre" maxLength={50} inputValue={name} setInputValue={setName} />
         <br />
-        {!email ? <TextField label="Teléfono" /> : <TextField label="Correo" />}
+        <TextField label="Correo" inputValue={email} setInputValue={setEmail}/>
+        <br />
+        <TextField label="Contraseña" maxLength={50} password={true} inputValue={password} setInputValue={setPassword}/>
 
-        <LinkTextButton
-          fn={() => setEmail(!email)}
-          normalText={!email ? "Usar Correo" : "Usar Teléfono"}
-        ></LinkTextButton>
 
         <h4>Fecha de nacimiento</h4>
         <p>
@@ -42,6 +64,7 @@ export const SingUpForm = () => {
           label={"Registrarse"}
           styleType="tertiary"
           customStyles={{ width: "400px" }}
+          fn={() => handleAuth(authStrategy.emailPassword)}
         />
       </div>
     </>

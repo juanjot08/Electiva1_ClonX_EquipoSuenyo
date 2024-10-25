@@ -4,12 +4,34 @@ import "../../styles/pages/Login.css";
 import { GoogleIconSVG, AppleIconSVG } from "../../components/Images";
 import { Modal } from "../../components/Modals";
 import { SingUpForm } from "./components/SingUpForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LoginForm } from "./components/LoginForm";
+import { AuthContext } from "../../authentication/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { authStrategy, getAuthStrategy } from "../../services/authentication/authFactory";
+import { routes } from "../../constants/routes";
 
 export const LoginPage = () => {
   const [showSingUpModal, setshowSingUpModal] = useState(false);
   const [showLoginModal, setshowLoginModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { authState, signUpUser } = useContext(AuthContext);
+
+  const handleAuth = async (authType) => {
+    try {
+      const strategy = getAuthStrategy(authType);
+
+      await signUpUser(strategy);
+      
+      if(authState.logged)
+        navigate(routes.home);
+
+    } catch (error) {
+      console.error('Authentication failed:', error);
+    }
+  };
 
   return (
     <>
@@ -26,6 +48,7 @@ export const LoginPage = () => {
             <LargeButton
               label="Registrate con Google"
               icon={() => GoogleIconSVG({})}
+              fn={() => handleAuth(authStrategy.google)}
             ></LargeButton>
             <br />
             <LargeButton

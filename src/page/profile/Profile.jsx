@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { getUserInformation } from "../../services/UserService";
+import { getUserInformation } from "../../services/users/UserService";
 import { ColumnContainer } from "../../components/ColumnContainer";
 import "./styles/Profile.css";
 import { ProfileIcon } from "../../components/ProfileIcon";
 import { LargeButton } from "../../components/Buttons";
 import Post from "../../components/Post";
-import { getPostsByUser } from "../../services/PostService";
+import { getPostsByUser } from "../../services/posts/PostService";
 import { routes } from "../../constants/routes";
 
 export const ProfileUserPage = () => {

@@ -1,6 +1,6 @@
 import Post from "../../../components/Post.jsx";
 import PostInput from "../../../components/PostInput.jsx";
-import { getPosts } from "../../../services/PostService.js"
+import { getPosts } from "../../../services/posts/PostService.js"
 import "../styles/FeedContainer.css"
 
 export const FeedContent = () => {

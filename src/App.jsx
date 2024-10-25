@@ -5,17 +5,20 @@ import { LoginPage } from "./page/Login/Login";
 import { ProfileUserPage } from "./page/profile/Profile";
 import { HomePage } from "./page/home/Home";
 import { Follow } from "./page/follow/Follow";
+import PrivateRoutes from "./tools/PrivateRoutes";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />}></Route>
-        <Route element={<BaseLayout />}>
-          <Route path="/home" element={<HomePage />}></Route>
-          <Route exact path="/:userName" element={<ProfileUserPage />}></Route>
-          <Route exact path="/:userName/followers" element={<Follow rute={"followers"}/>}></Route>
-          <Route exact path="/:userName/following" element={<Follow rute={"following"}/>}></Route>
+        <Route element={<PrivateRoutes />}>
+          <Route element={<BaseLayout />}>
+            <Route path="/home" element={<HomePage />}></Route>
+            <Route exact path="/:userName" element={<ProfileUserPage />}></Route>
+            <Route exact path="/:userName/followers" element={<Follow rute={"followers"}/>}></Route>
+            <Route exact path="/:userName/following" element={<Follow rute={"following"}/>}></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
