@@ -1,19 +1,20 @@
 import { SignUpWithGoogle } from "../../../infrastructure/firebase/authProviders/googleProvider";
-import LocalStorageService from "../../common/LocalStorageService";
+import SessionStorageService from "../../common/LocalStorageService";
 
 export default class GoogleAuth {
-  // async logIn() {
-  //   const { ok, uid, photoURL, displayName, errorMessage } = await SignUpWithGoogle();
+  async logIn() {
+    const { ok, uid, email, photoURL, errorMessage, displayName } =
+      await SignUpWithGoogle();
 
-  //   if (!ok) {
-  //     return { success: false, errorMessage };
-  //   }
+    if (!ok) {
+      return { success: false, errorMessage };
+    }
 
-  //   return {
-  //     success: true,
-  //     user: { uid, email, photoURL, displayName },
-  //   };
-  // }
+    return {
+      success: true,
+      user: { uid, email, photoURL, displayName },
+    };
+  }
 
   async signUp(email, password) {
     const { ok, uid, photoURL, errorMessage, displayName } =
@@ -30,6 +31,6 @@ export default class GoogleAuth {
   }
 
   logOut() {
-    LocalStorageService.removeItem("user");
+    SessionStorageService.removeItem("user");
   }
 }

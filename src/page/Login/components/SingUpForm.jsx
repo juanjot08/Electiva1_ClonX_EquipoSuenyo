@@ -1,20 +1,23 @@
-import { LargeButton, LinkTextButton } from "../../../components/Buttons";
+import { LargeButton } from "../../../components/Buttons";
 import { TextField } from "../../../components/TextField";
 import { DateField } from "../../../components/DateField";
 import "../styles/SingUpForm.css";
 import { getDateInfo } from "../../../services/common/GlobalInformationService";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../authentication/contexts/AuthContext";
-import { authStrategy, getAuthStrategy } from "../../../services/authentication/authFactory";
+import {
+  authStrategy,
+  getAuthStrategy,
+} from "../../../services/authentication/authFactory";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../constants/routes";
 
 export const SingUpForm = () => {
   const { days, months, years } = getDateInfo();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const navigate = useNavigate();
 
@@ -26,31 +29,44 @@ export const SingUpForm = () => {
 
       await signUpUser(strategy, email, password, name);
 
-      if(authState.logged)
-        navigate(routes.home);
-
     } catch (error) {
-      console.error('Authentication failed:', error);
+      console.error("Authentication failed:", error);
     }
   };
+
+  useEffect(() => {
+    if (authState.logged) {
+      navigate(routes.home);
+    }
+  }, [authState.logged, navigate]);
 
   return (
     <>
       <div className="singUp-content">
         <h1>Crea tu cuenta</h1>
-        <TextField label="Nombre" maxLength={50} inputValue={name} setInputValue={setName} />
+        <TextField
+          label="Nombre"
+          maxLength={50}
+          inputValue={name}
+          setInputValue={setName}
+        />
         <br />
-        <TextField label="Correo" inputValue={email} setInputValue={setEmail}/>
+        <TextField label="Correo" inputValue={email} setInputValue={setEmail} />
         <br />
-        <TextField label="Contraseña" maxLength={50} password={true} inputValue={password} setInputValue={setPassword}/>
-
+        <TextField
+          label="Contraseña"
+          maxLength={50}
+          password={true}
+          inputValue={password}
+          setInputValue={setPassword}
+        />
 
         <h4>Fecha de nacimiento</h4>
         <p>
           Esta información no será pública. Confirma tu propia edad, incluso si
           esta cuenta es para una empresa, una mascota u otra cosa.
         </p>
-        <div className="longDate-container">
+        <div className="flex-row">
           <DateField
             label={"Mes"}
             n={"200px"}

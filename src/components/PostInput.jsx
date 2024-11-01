@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../styles/Components/PostInput.css";
 import { ProfileIcon } from "./ProfileIcon";
 import { LargeButton } from "./Buttons";
+import { AuthContext } from "../authentication/contexts/AuthContext";
+import { createPost } from "../infrastructure/firebase/repositories/user.repository";
 
-const PostInput = ({ data }) => {
+const PostInput = ({ data, reloadAction }) => {
   const [mensaje, setMensaje] = useState("");
   const [inputText, setInputText] = useState("");
+
+  const { getLogedUserInfo } = useContext(AuthContext);
+
+  const user = getLogedUserInfo();
 
   const iconItems = [
     { id: 1, name: "image", accept: null },
@@ -30,15 +36,32 @@ const PostInput = ({ data }) => {
     }
   };
 
+  const onPost = async () => {
+    const newPost = {
+      userId: user.id,
+      content: inputText,
+      publishDate: new Date()
+    }
+
+    if(inputText == "")
+      return;
+
+    await createPost(newPost);
+
+    reloadAction();
+
+    setInputText("");
+  }
+
   const percentage = (inputText.length / 300) * 100;
 
   return (
     <div
       className="post-input-container"
-      style={{ height: "600px"}}
+      // style={{ height: "600px"}}
     >
       <div className="flex-row">
-        <ProfileIcon imageUrl={"https://random-image-pepebigotes.vercel.app/api/random-image"}/>
+        <ProfileIcon imageUrl={user.profilePhoto}/>
         <div className="flex-column" style={{ width: "100%" }}>
           <div style={{height: "45px"}}>
             <textarea
@@ -87,7 +110,7 @@ const PostInput = ({ data }) => {
                 }}
               >
                 <div className="material-symbols-outlined">add_circle</div>
-                <LargeButton label="Postear" styleType="tertiary" />
+                <LargeButton label="Postear" fn={() => onPost()} styleType="tertiary" />
               </div>
             </div>
           </div>

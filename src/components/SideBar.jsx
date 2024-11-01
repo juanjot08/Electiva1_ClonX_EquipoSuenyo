@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IconButton, LargeButton } from "./Buttons";
 import {
   UnfilledHomeIconSVG,
@@ -12,11 +12,11 @@ import {
   OptionsIconSVG,
   SavesIconSVG,
   LightningIconSVG,
-  FeatherIconSVG,
 } from "./Images";
 import "../styles/Components/SideBar.css";
 import { routes } from "../constants/routes";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../authentication/contexts/AuthContext";
 
 function SideBar() {
   const [windowSize, setWindowSize] = React.useState({
@@ -25,6 +25,10 @@ function SideBar() {
   });
 
   const navigate = useNavigate();
+
+  const { getLogedUserInfo } = useContext(AuthContext);
+
+  const user = getLogedUserInfo();
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -112,7 +116,7 @@ function SideBar() {
       )}
       <LargeButton
         icon={() => PersonIconSVG({})}
-        fn={() => navigate("Juancho2Jose")}
+        fn={() => navigate(user.userName)}
         label="Perfil"
         styleType="quaternary"
         customClass="sidebar_button"
@@ -123,20 +127,6 @@ function SideBar() {
         styleType="quaternary"
         customClass="sidebar_button"
       />
-      {windowSize?.width <= "1250" ? (
-        <LargeButton
-          icon={() => FeatherIconSVG({})}
-          styleType="tertiary"
-          customClass="sidebar_button"
-        />
-      ) : (
-        <LargeButton
-          label="Postear"
-          styleType="tertiary"
-          customClass="sidebar_button"
-          customStyles={{ padding: "14px 81px 14px 81px" }}
-        />
-      )}
     </nav>
   );
 }

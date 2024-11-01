@@ -3,7 +3,6 @@ import { authTypes } from "../types/authTypes";
 export const authReducer = (state = {}, action = {}) => {
   switch (action.type) {
     case authTypes.logIn:
-      console.log("Si entra al reducer")
       return {
         ...state,
         logged: true,

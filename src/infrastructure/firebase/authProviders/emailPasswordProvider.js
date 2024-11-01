@@ -50,6 +50,8 @@ export const SignInWithEmail = async ( email, password ) => {
     console.error("Provide Email and Password");
     return;
   }
+
+  console.log(email, password)
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -57,12 +59,20 @@ export const SignInWithEmail = async ( email, password ) => {
       password
     );
 
-    const user = userCredential.user;
+    const { displayName, photoURL, uid } = userCredential.user;
+    
+    const realDisplayName = displayName ?? email.split("@")[0];
+    
+    const photo = photoURL ?? "https://random-image-pepebigotes.vercel.app/api/random-image";
 
     return {
       ok: true,
-      user,
+      uid,
+      photoURL: photo,
+      email,
+      displayName: realDisplayName
     };
+
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;

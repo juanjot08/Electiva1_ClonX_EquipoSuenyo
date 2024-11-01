@@ -2,15 +2,19 @@ import {
   SignInWithEmail,
   SignupWithEmail,
 } from "../../../infrastructure/firebase/authProviders/emailPasswordProvider";
-import LocalStorageService from "../../common/LocalStorageService";
+import SessionStorageService from "../../common/LocalStorageService";
 
 export default class EmailPasswordAuth {
 
   async logIn(email, password) {    
+
+    console.log(email, password)
     const { ok, uid, photoURL, displayName, errorMessage } =
       await SignInWithEmail(email, password);
 
     if (!ok) {
+      console.log(errorMessage)
+
       return { success: false, errorMessage };
     }
 
@@ -37,6 +41,6 @@ export default class EmailPasswordAuth {
   }
 
   logOut() {
-    LocalStorageService.removeItem("user");
+    SessionStorageService.removeItem("user");
   }
 }

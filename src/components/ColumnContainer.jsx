@@ -31,9 +31,3 @@ export const ColumnContainer = ({ gaps = [], widths = [], children }) => {
     </div>
   );
 };
-
-ColumnContainer.propTypes = {
-  children: PropTypes.array.isRequired,
-  widths: PropTypes.array,
-  gaps: PropTypes.array,
-};

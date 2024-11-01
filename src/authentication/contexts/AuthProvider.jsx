@@ -1,38 +1,39 @@
 import { useReducer } from "react";
-import { AuthContext } from "./AuthContext"
+import { AuthContext } from "./AuthContext";
 import { authReducer } from "../reducers/authReducer";
 import { useAuth } from "../hooks/useAuth";
 import LocalStorageService from "../../services/common/LocalStorageService";
 
-
 const initialState = {
   logged: false,
   user: {},
-}
+};
 
 const init = () => {
   const user = LocalStorageService.getItem("user");
 
-  const isLogged = (!user) ? false : true;
+  const isLogged = !user ? false : true;
 
   const state = {
     logged: isLogged,
     user,
-  }
+  };
 
   return state;
-}
-
+};
 
 export const AuthProvider = ({ children }) => {
-
+  
   const [authState, dispatch] = useReducer(authReducer, initialState, init);
 
-  const { logInUser, logOutUser, signUpUser } = useAuth( dispatch );
+  const { logInUser, logOutUser, signUpUser, getLogedUserInfo } =
+    useAuth(dispatch);
 
   return (
-    <AuthContext.Provider value={{ authState, logInUser, logOutUser, signUpUser }}>
-      { children }
+    <AuthContext.Provider
+      value={{ authState, logInUser, logOutUser, signUpUser, getLogedUserInfo }}
+    >
+      {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};

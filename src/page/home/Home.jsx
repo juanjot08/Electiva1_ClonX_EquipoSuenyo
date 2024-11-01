@@ -1,6 +1,5 @@
 import { ColumnContainer } from "../../components/ColumnContainer"
 import { FeedContent } from "./components/FeedContent"
-import { Follow } from "../follow/Follow"
 import "../../styles/pages/Home.css"
 
 export const HomePage = () => {

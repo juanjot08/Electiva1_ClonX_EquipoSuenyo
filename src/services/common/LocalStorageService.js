@@ -1,4 +1,4 @@
-const LocalStorageService = {
+const SessionStorageService = {
 
   setItem: (key, value) => {
     if (!key) {
@@ -7,7 +7,7 @@ const LocalStorageService = {
     }
     try {
       const serializedValue = JSON.stringify(value);
-      localStorage.setItem(key, serializedValue);
+      sessionStorage.setItem(key, serializedValue);
     } catch (error) {
       console.error(`Error al guardar en localStorage: ${error}`);
     }
@@ -19,7 +19,7 @@ const LocalStorageService = {
       return null;
     }
     try {
-      const serializedValue = localStorage.getItem(key);
+      const serializedValue = sessionStorage.getItem(key);
       return serializedValue ? JSON.parse(serializedValue) : null;
     } catch (error) {
       console.error(`Error al obtener el valor de localStorage: ${error}`);
@@ -33,7 +33,7 @@ const LocalStorageService = {
       return;
     }
     try {
-      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
     } catch (error) {
       console.error(`Error al eliminar del localStorage: ${error}`);
     }
@@ -41,7 +41,7 @@ const LocalStorageService = {
 
   clear: () => {
     try {
-      localStorage.clear();
+      sessionStorage.clear();
     } catch (error) {
       console.error(`Error al limpiar localStorage: ${error}`);
     }
@@ -52,8 +52,8 @@ const LocalStorageService = {
       console.error("No se ha proporcionado una clave válida.");
       return false;
     }
-    return localStorage.getItem(key) !== null;
+    return sessionStorage.getItem(key) !== null;
   },
 };
 
-export default LocalStorageService;
+export default SessionStorageService;
