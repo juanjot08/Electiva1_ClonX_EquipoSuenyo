@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { AuthContext } from "./AuthContext";
 import { authReducer } from "../reducers/authReducer";
 import { useAuth } from "../hooks/useAuth";
-import LocalStorageService from "../../services/common/LocalStorageService";
+import SessionStorageService from "../../services/common/LocalStorageService";
 
 const initialState = {
   logged: false,
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const init = () => {
-  const user = LocalStorageService.getItem("user");
+  const user = SessionStorageService.getItem("user");
 
   const isLogged = !user ? false : true;
 
