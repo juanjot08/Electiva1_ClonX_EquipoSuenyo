@@ -3,7 +3,7 @@ import "../styles/Components/PostInput.css";
 import { ProfileIcon } from "./ProfileIcon";
 import { LargeButton } from "./Buttons";
 import { AuthContext } from "../authentication/contexts/AuthContext";
-import { createPost } from "../infrastructure/firebase/repositories/user.repository";
+import { createPost } from "../infrastructure/firebase/repositories/post.repository";
 
 const PostInput = ({ data, reloadAction }) => {
   const [mensaje, setMensaje] = useState("");

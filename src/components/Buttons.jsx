@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import '../styles/Components/Buttons.css'
+import React, { useEffect, useState } from "react";
+import "../styles/Components/Buttons.css";
+import {
+  followUser,
+  isFollowingUser,
+  unfollowUser,
+} from "../infrastructure/firebase/repositories/user.repository";
 /**
  * Componente de botón largo personalizable.
  *
@@ -17,25 +22,41 @@ import '../styles/Components/Buttons.css'
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleType = "primary", icon = "", boldText = false, customStyles = {}, customClass = "", sidebar = false }) => {
-    return (
-        // <div className={`large_button_container`}>
-            <button
-                className={`button ${styleType}-button ${customClass}`}
-                type="button"
-                onClick={fn}
-                name={name}
-                disabled={isDisabled}
-                style={customStyles}
-            >
-                {icon && icon()}
-                <div className={`text_button_container ${sidebar && 'text_button_container_trigger'}`} style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
-                    {label}
-                </div>
-            </button>
-        // </div>
-    )
-}
+export const LargeButton = ({
+  name,
+  label = "",
+  fn,
+  isDisabled = false,
+  styleType = "primary",
+  icon = "",
+  boldText = false,
+  customStyles = {},
+  customClass = "",
+  sidebar = false,
+}) => {
+  return (
+    // <div className={`large_button_container`}>
+    <button
+      className={`button ${styleType}-button ${customClass}`}
+      type="button"
+      onClick={fn}
+      name={name}
+      disabled={isDisabled}
+      style={customStyles}
+    >
+      {icon && icon()}
+      <div
+        className={`text_button_container ${
+          sidebar && "text_button_container_trigger"
+        }`}
+        style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }}
+      >
+        {label}
+      </div>
+    </button>
+    // </div>
+  );
+};
 
 /**
  * Componente de botón icono personalizable.
@@ -54,47 +75,77 @@ export const LargeButton = ({ name, label = "", fn, isDisabled = false, styleTyp
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const IconButton = ({ name, label = "", fn, isDisabled = false, customClass = "", icon = "", iconType = "primary", boldText = false, customStyles = {}, color = "#404245", circleLenght = "32px" }) => {
-    const [circleColor, setCircleColor] = useState("none")
-    const [textColor, setTextColor] = useState(color)
-    const bgcolor = (iconType == "primary" ? "#181818" : iconType == "secondary" ? "rgba(255, 0, 0, 0.3)" : "rgba(0, 255, 0, 0.3)")
-    const txtcolor = (iconType == "primary" ? "#181818" : iconType == "secondary" ? "rgba(255, 0, 0, 1)" : "rgba(0, 255, 0, 1)")
+export const IconButton = ({
+  name,
+  label = "",
+  fn,
+  isDisabled = false,
+  customClass = "",
+  icon = "",
+  iconType = "primary",
+  boldText = false,
+  customStyles = {},
+  color = "#404245",
+  circleLenght = "32px",
+}) => {
+  const [circleColor, setCircleColor] = useState("none");
+  const [textColor, setTextColor] = useState(color);
+  const bgcolor =
+    iconType == "primary"
+      ? "#181818"
+      : iconType == "secondary"
+      ? "rgba(255, 0, 0, 0.3)"
+      : "rgba(0, 255, 0, 0.3)";
+  const txtcolor =
+    iconType == "primary"
+      ? "#181818"
+      : iconType == "secondary"
+      ? "rgba(255, 0, 0, 1)"
+      : "rgba(0, 255, 0, 1)";
 
-    const defaultStyles = {
-        color: textColor, fill: textColor
-    }
+  const defaultStyles = {
+    color: textColor,
+    fill: textColor,
+  };
 
-    const combinedStyles = { ...defaultStyles, ...customStyles };
+  const combinedStyles = { ...defaultStyles, ...customStyles };
 
-    return (
-        <button
-            className={`button icon-button icon-${iconType} ${customClass}`}
-            style={combinedStyles}
-            type="button"
-            onClick={fn}
-            name={name}
-            disabled={isDisabled}
-            onMouseOver={() => {
-                setCircleColor(bgcolor)
-                setTextColor(color === "#404245" ? txtcolor : color)
-            }}
-            onMouseOut={() => {
-                setCircleColor("none")
-                setTextColor(color)
-            }}
-        >
-            <div className='circulo' style={{
-                background: circleColor, width: circleLenght, height: circleLenght
-            }}>
-                {icon && icon()}
-            </div>
-            <div className='button_icon_text' style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }}>
-                {label && label}
-            </div>
-
-        </button>
-    )
-}
+  return (
+    <button
+      className={`button icon-button icon-${iconType} ${customClass}`}
+      style={combinedStyles}
+      type="button"
+      onClick={fn}
+      name={name}
+      disabled={isDisabled}
+      onMouseOver={() => {
+        setCircleColor(bgcolor);
+        setTextColor(color === "#404245" ? txtcolor : color);
+      }}
+      onMouseOut={() => {
+        setCircleColor("none");
+        setTextColor(color);
+      }}
+    >
+      <div
+        className="circulo"
+        style={{
+          background: circleColor,
+          width: circleLenght,
+          height: circleLenght,
+        }}
+      >
+        {icon && icon()}
+      </div>
+      <div
+        className="button_icon_text"
+        style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }}
+      >
+        {label && label}
+      </div>
+    </button>
+  );
+};
 
 /**
  * Componente de botón largo personalizable.
@@ -109,16 +160,26 @@ export const IconButton = ({ name, label = "", fn, isDisabled = false, customCla
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const LinkTextButton = ({ boldText = "", normalText = "", fn = () => console.log("this is a test"), customStyles = "", customClass = "" }) => {
-    return (
-        <div>
-            <a onClick={fn} style={{ customStyles }} className={`${customClass}`}>
-                {boldText && <span style={{ fontWeight: 'bold', color: "white" }}>{boldText + " "}</span>}
-                {normalText && <span>{normalText}</span>}
-            </a>
-        </div>
-    )
-}
+export const LinkTextButton = ({
+  boldText = "",
+  normalText = "",
+  fn = () => console.log("this is a test"),
+  customStyles = "",
+  customClass = "",
+}) => {
+  return (
+    <div>
+      <a onClick={fn} style={{ customStyles }} className={`${customClass}`}>
+        {boldText && (
+          <span style={{ fontWeight: "bold", color: "white" }}>
+            {boldText + " "}
+          </span>
+        )}
+        {normalText && <span>{normalText}</span>}
+      </a>
+    </div>
+  );
+};
 
 /**
  * Componente de botón largo personalizable.
@@ -137,22 +198,91 @@ export const LinkTextButton = ({ boldText = "", normalText = "", fn = () => cons
  *
  * @returns {JSX.Element} Elemento JSX del componente.
  */
-export const RectangleButton = ({ name, label = "", fn, isDisabled = false, styleType = "secondary", icon = "", boldText = false, customStyles = {}, customClass = "", sidebar = false }) => {
-    return (
-        <div className={`large_button_container`}>
-            <button
-                className={`button ${styleType}-button ${customClass} rectangle_button_container`}
-                type="button"
-                onClick={fn}
-                name={name}
-                disabled={isDisabled}
-                style={customStyles}
-            >
-                {icon && icon()}
-                <div className={`text_button_container ${sidebar && 'text_button_container_trigger'}`} style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }} >
-                    {label}
-                </div>
-            </button>
+export const RectangleButton = ({
+  name,
+  label = "",
+  fn,
+  isDisabled = false,
+  styleType = "secondary",
+  icon = "",
+  boldText = false,
+  customStyles = {},
+  customClass = "",
+  sidebar = false,
+}) => {
+  return (
+    <div className={`large_button_container`}>
+      <button
+        className={`button ${styleType}-button ${customClass} rectangle_button_container`}
+        type="button"
+        onClick={fn}
+        name={name}
+        disabled={isDisabled}
+        style={customStyles}
+      >
+        {icon && icon()}
+        <div
+          className={`text_button_container ${
+            sidebar && "text_button_container_trigger"
+          }`}
+          style={boldText ? { fontWeight: 700 } : { fontWeight: 400 }}
+        >
+          {label}
         </div>
-    )
-}
+      </button>
+    </div>
+  );
+};
+
+export const FollowButton = ({
+  currentUser,
+  targetUser,
+  customStyles,
+  reFetchFuncion = () => {},
+}) => {
+  const [isFollowing, setIsFollowing] = useState(false); // Inicializa como false
+
+  useEffect(() => {
+    const fetchFollow = async (currentId, targetId) => {
+      const followingStatus = await isFollowingUser(currentId, targetId);
+      return followingStatus;
+    };
+
+    const checkFollowingStatus = async () => {
+      const followingStatus = await fetchFollow(currentUser, targetUser);
+      setIsFollowing(followingStatus);
+    };
+
+    checkFollowingStatus();
+  }, [currentUser, targetUser, reFetchFuncion]);
+
+  return isFollowing ? (
+    <LargeButton
+      label="Dejar de Seguir"
+      styleType="secondary"
+      customStyles={{
+        height: "40px",
+        width: "150px",
+        ...customStyles,
+      }}
+      fn={async () => {
+        await unfollowUser(currentUser, targetUser);
+        reFetchFuncion();
+      }}
+    />
+  ) : (
+    <LargeButton
+      label="Seguir"
+      styleType="secondary"
+      customStyles={{
+        height: "40px",
+        width: "150px",
+        ...customStyles,
+      }}
+      fn={async () => {
+        await followUser(currentUser, targetUser);
+        reFetchFuncion();
+      }}
+    />
+  );
+};

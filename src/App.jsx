@@ -6,6 +6,7 @@ import { ProfileUserPage } from "./page/profile/Profile";
 import { HomePage } from "./page/home/Home";
 import { Follow } from "./page/follow/Follow";
 import PrivateRoutes from "./tools/PrivateRoutes";
+import { SearchUsers } from "./page/searchUsers/searchUsers";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/:userName" element={<ProfileUserPage />}></Route>
             <Route exact path="/:userName/followers" element={<Follow rute={"followers"}/>}></Route>
             <Route exact path="/:userName/following" element={<Follow rute={"following"}/>}></Route>
+            <Route path="/search/:userName" element={<SearchUsers />} />
           </Route>
         </Route>
       </Routes>

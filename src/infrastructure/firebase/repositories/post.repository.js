@@ -5,9 +5,29 @@ import {
   getDocs,
   orderBy,
   limit,
+  Timestamp,
+  addDoc,
 } from "firebase/firestore";
 import { collections, db } from "../config";
 
+export const createPost = async (post) => {
+  try {
+    const postsRef = collection(db, collections.posts);
+    const newPost = {
+      userId: post.userId,
+      content: post.content,
+      publishDate: Timestamp.fromDate(post.publishDate),
+    };
+
+    const docRef = await addDoc(postsRef, newPost);
+
+    console.log("Post created with ID: ", docRef.id);
+    return { id: docRef.id, ...newPost };
+  } catch (error) {
+    console.error("Error creating post: ", error);
+    return null;
+  }
+};
 
 export const getPostsByUserId = async (userId) => {
   try {
@@ -28,20 +48,38 @@ export const getPostsByUserId = async (userId) => {
   }
 };
 
-export const getLastPosts = async () => {
+export const getLastPosts = async (userId) => {
   try {
-      const postsRef = collection(db, collections.posts);
-      const postsQuery = query(postsRef, orderBy('publishDate', 'desc'), limit(10)); 
-      const querySnapshot = await getDocs(postsQuery);
+    const followingRef = collection(
+      db,
+      collections.users,
+      userId,
+      collections.following
+    );
+    
+    const followingSnapshot = await getDocs(followingRef);
 
-      const posts = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-      }));
+    const followingIds = followingSnapshot.docs.map((doc) => doc.id);
 
-      return posts;
+    const postsRef = collection(db, collections.posts);
+
+    let postsQuery = query(
+      postsRef,
+      where("userId", "in", [userId, ...followingIds]),
+      orderBy("publishDate", "desc"),
+      limit(10)
+    );
+
+    const querySnapshot = await getDocs(postsQuery);
+
+    const posts = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return posts;
   } catch (error) {
-      console.error("Error getting posts: ", error);
-      return [];
+    console.error("Error getting posts: ", error);
+    return [];
   }
 };

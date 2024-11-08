@@ -17,8 +17,6 @@ export const SignUpWithGoogle = async () => {
     }
     const { displayName, email, photoURL, uid } = result.user;
     
-    console.log(result.user);
-
     return {
       ok: true,
       uid,

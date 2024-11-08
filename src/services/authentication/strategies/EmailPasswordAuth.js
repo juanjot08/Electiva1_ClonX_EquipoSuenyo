@@ -8,7 +8,6 @@ export default class EmailPasswordAuth {
 
   async logIn(email, password) {    
 
-    console.log(email, password)
     const { ok, uid, photoURL, displayName, errorMessage } =
       await SignInWithEmail(email, password);
 

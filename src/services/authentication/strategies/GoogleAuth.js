@@ -16,9 +16,9 @@ export default class GoogleAuth {
     };
   }
 
-  async signUp(email, password) {
-    const { ok, uid, photoURL, errorMessage, displayName } =
-      await SignUpWithGoogle(email, password);
+  async signUp() {
+    const { ok, uid, photoURL, errorMessage, email, displayName } =
+      await SignUpWithGoogle();
 
     if (!ok) {
       return { success: false, errorMessage };
