@@ -8,7 +8,6 @@ import {
 } from "firebase/firestore";
 import { collections, db } from "../config";
 
-
 export const getPostsByUserId = async (userId) => {
   try {
     const postsRef = collection(db, collections.posts);
@@ -28,20 +27,38 @@ export const getPostsByUserId = async (userId) => {
   }
 };
 
-export const getLastPosts = async () => {
+export const getLastPosts = async (userId) => {
   try {
-      const postsRef = collection(db, collections.posts);
-      const postsQuery = query(postsRef, orderBy('publishDate', 'desc'), limit(10)); 
-      const querySnapshot = await getDocs(postsQuery);
+    const followingRef = collection(
+      db,
+      collections.users,
+      userId,
+      collections.following
+    );
+    
+    const followingSnapshot = await getDocs(followingRef);
 
-      const posts = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-      }));
+    const followingIds = followingSnapshot.docs.map((doc) => doc.id);
 
-      return posts;
+    const postsRef = collection(db, collections.posts);
+
+    let postsQuery = query(
+      postsRef,
+      where("userId", "in", [userId, ...followingIds]),
+      orderBy("publishDate", "desc"),
+      limit(10)
+    );
+
+    const querySnapshot = await getDocs(postsQuery);
+
+    const posts = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return posts;
   } catch (error) {
-      console.error("Error getting posts: ", error);
-      return [];
+    console.error("Error getting posts: ", error);
+    return [];
   }
 };
