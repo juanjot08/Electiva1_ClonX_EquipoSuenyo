@@ -22,12 +22,12 @@ export const useAuth = (dispatch) => {
     }
 
     const { user } = result;
-
-    await dispatch({ type: authTypes.logIn, payload: user });
-
+    
     const userFound = await getUserById(user.uid);
-
+    
     SessionStorageService.setItem("user", userFound);
+    
+    await dispatch({ type: authTypes.logIn, payload: user });
 
     return user;
   };
@@ -61,7 +61,7 @@ export const useAuth = (dispatch) => {
       user.uid,
       user.email.split("@")[0],
       user.displayName,
-      user.photoURL,
+      user.photoURL ?? "https://firebasestorage.googleapis.com/v0/b/clon-x-electiva.firebasestorage.app/o/defaultPhoto.png?alt=media&token=5af829af-e8b0-45a2-8dea-bded1d6869e9",
       registerDate
     );
 
