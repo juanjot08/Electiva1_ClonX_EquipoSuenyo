@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Components/Buttons.css";
-import { followUser, unfollowUser } from "../infrastructure/firebase/repositories/user.repository";
+import {
+  followUser,
+  isFollowingUser,
+  unfollowUser,
+} from "../infrastructure/firebase/repositories/user.repository";
 /**
  * Componente de botón largo personalizable.
  *
@@ -230,33 +234,55 @@ export const RectangleButton = ({
   );
 };
 
-export const FollowButton = ({currentUser, targetUser}) => {
-  return (
-    <LargeButton
-      label="Seguir"
-      styleType="secondary"
-      customStyles={{
-        height: "40px",
-        width: "150px",
-        marginTop: "50px",
-      }}
-      fn={async () => await followUser(currentUser, targetUser)}
-    />
-  );
-};
+export const FollowButton = ({
+  currentUser,
+  targetUser,
+  customStyles,
+  reFetchFuncion = () => {},
+}) => {
+  const [isFollowing, setIsFollowing] = useState(false); // Inicializa como false
 
-export const UnfollowButton = ({currentUser, targetUser}) => {
-  return (
+  useEffect(() => {
+    const fetchFollow = async (currentId, targetId) => {
+      const followingStatus = await isFollowingUser(currentId, targetId);
+      return followingStatus;
+    };
+
+    const checkFollowingStatus = async () => {
+      const followingStatus = await fetchFollow(currentUser, targetUser);
+      setIsFollowing(followingStatus);
+    };
+
+    checkFollowingStatus();
+  }, [currentUser, targetUser, reFetchFuncion]);
+
+  return isFollowing ? (
     <LargeButton
       label="Dejar de Seguir"
       styleType="secondary"
       customStyles={{
         height: "40px",
         width: "150px",
-        marginTop: "50px",
+        ...customStyles,
       }}
-      fn={async () => await unfollowUser(currentUser, targetUser)}
+      fn={async () => {
+        await unfollowUser(currentUser, targetUser);
+        reFetchFuncion();
+      }}
+    />
+  ) : (
+    <LargeButton
+      label="Seguir"
+      styleType="secondary"
+      customStyles={{
+        height: "40px",
+        width: "150px",
+        ...customStyles,
+      }}
+      fn={async () => {
+        await followUser(currentUser, targetUser);
+        reFetchFuncion();
+      }}
     />
   );
 };
-

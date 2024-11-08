@@ -5,8 +5,29 @@ import {
   getDocs,
   orderBy,
   limit,
+  Timestamp,
+  addDoc,
 } from "firebase/firestore";
 import { collections, db } from "../config";
+
+export const createPost = async (post) => {
+  try {
+    const postsRef = collection(db, collections.posts);
+    const newPost = {
+      userId: post.userId,
+      content: post.content,
+      publishDate: Timestamp.fromDate(post.publishDate),
+    };
+
+    const docRef = await addDoc(postsRef, newPost);
+
+    console.log("Post created with ID: ", docRef.id);
+    return { id: docRef.id, ...newPost };
+  } catch (error) {
+    console.error("Error creating post: ", error);
+    return null;
+  }
+};
 
 export const getPostsByUserId = async (userId) => {
   try {

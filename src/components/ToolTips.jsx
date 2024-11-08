@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './ToolTips.css'; // Make sure to create and style this CSS file
 
-const ToolTips = ({ children, content, customClass = "usertag-tooltip" }) => {
+export const ToolTips = ({ children, content, customClass = "usertag-tooltip" }) => {
     const [visible, setVisible] = useState(false);
 
     const showTooltip = () => setVisible(true);
@@ -14,6 +14,3 @@ const ToolTips = ({ children, content, customClass = "usertag-tooltip" }) => {
         </div>
     );
 };
-
-export default ToolTips;
-
