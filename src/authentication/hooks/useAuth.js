@@ -7,7 +7,6 @@ import { authTypes } from "../types/authTypes";
 
 export const useAuth = (dispatch) => {
   const logInUser = async (strategy, email = null, password = null) => {
-    console.log(email, password)
     const result =
       email && password
         ? await strategy.logIn(email, password)
@@ -73,8 +72,9 @@ export const useAuth = (dispatch) => {
     return user;
   };
 
-  const logOutUser = (strategy) => {
-    strategy.logOut();
+  const logOutUser = () => {
+    SessionStorageService.removeItem("user");
+
     dispatch({ type: authTypes.logOut });
   };
 
