@@ -19,18 +19,21 @@
     height: 3.5em;
     outline: none;
     border: .2vh solid rgb(103, 111, 119);
-    background-color: black;
+    background: none;
     box-shadow: none !important;
+    position: relative;
+    z-index: 1;
 }
 
 .floating-label {
     position: absolute;
     left: 2%;
     color: rgb(113, 118, 123);
-    font-size: 16px;
+    font-size: 14px;
     bottom: 83%;
     transform: translateY(50%);
     transition: all 0.2s ease;
+    z-index: 0;
 }
 
 .floating-counter {
@@ -39,7 +42,7 @@
     color: black;
     font-size: 13px;
     bottom: 85%;
-    transform: translateY(0);
+    transform: translateY(1);
     transition: all 0.2s ease;
 }
 
@@ -47,19 +50,19 @@
 .user-input-wrp:focus-within .floating-label {
     font-size: 13px;
     color: rgb(29, 155, 240);
-    transform: translateY(0);
+    transform: translateY(1);
 }
 
 .user-input-wrp:not(:focus-within) .inputText:not(:placeholder-shown)+.floating-label {
     font-size: 13px;
     color: rgb(113, 118, 123);
-    transform: translateY(0);
+    transform: translateY(1);
 }
 
 .user-input-wrp:focus-within .floating-counter {
     font-size: 13px;
     color: rgb(113, 118, 123);
-    transform: translateY(0);
+    transform: translateY(1);
 }
 
 
