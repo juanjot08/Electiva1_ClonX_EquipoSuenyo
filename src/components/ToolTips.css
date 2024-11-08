@@ -1,0 +1,35 @@
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-content {
+    visibility: visible;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    /* Position the tooltip above the text */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.tooltip-container:hover .tooltip-content {
+    opacity: 1;
+}
+
+.usertag-tooltip {
+    background-color: black !important;
+    width: 300px !important;
+    height: fit-content !important;
+    border-radius: 16px;
+    border: 1px solid rgba(45, 45, 45, 0.7) !important;
+    padding: 25px;
+    box-sizing: border-box;
+    box-shadow: 0 0 6px 1px rgba(45, 45, 45, 0.5);
+}

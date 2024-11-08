@@ -1,0 +1,46 @@
+#card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% auto;
+}
+
+#custom_card_container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+}
+
+#card_data_container {
+    display: flex;
+    gap: 15px;
+}
+
+.card_text_container {
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: auto auto;
+    text-align: start;
+}
+
+.card_username_text {
+    font-weight: 700;
+    color: white;
+}
+
+#card_followed_state {
+    margin-left: 6px;
+    font-size: 10px;
+    padding: 2px;
+    border-radius: 4px;
+    background-color: #202327;
+
+}
+
+.card_largebutton_text {
+    padding: 0px 12px 0px 12px;
+}
+
+#card_actions {
+    display: flex;
+}
