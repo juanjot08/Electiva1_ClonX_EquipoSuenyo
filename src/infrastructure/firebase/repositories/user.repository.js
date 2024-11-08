@@ -9,6 +9,7 @@ import {
   updateDoc,
   Timestamp,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { collections, db } from "../config";
 
@@ -26,9 +27,8 @@ export const createUser = async (
       userName,
       name,
       profilePhoto,
-      following: [],
-      followers: [],
-      coverImage: "",
+      coverImage:
+        "https://firebasestorage.googleapis.com/v0/b/clon-x-electiva.firebasestorage.app/o/defaultCover.png?alt=media&token=f661103a-4d6d-4c3f-951d-82686cec9bb3",
       registerDate,
     });
   } catch (ex) {
@@ -85,12 +85,38 @@ export const getUserByUserName = async (userName) => {
 };
 
 export const getFollowCounters = async (userName) => {
-  const user = await getUserByUserName(userName);
+  try {
+    const user = await getUserByUserName(userName);
 
-  return {
-    followersCount: user.followers.length,
-    followingCount: user.following.length,
-  };
+    const followingRef = collection(
+      doc(db, collections.users, user.id),
+      collections.following
+    );
+    const followersRef = collection(
+      doc(db, collections.users, user.id),
+      collections.followers
+    );
+
+    const followingSnapshot = await getDocs(followingRef);
+    const followersSnapshot = await getDocs(followersRef);
+
+    const followingCount = followingSnapshot.size;
+    const followersCount = followersSnapshot.size;
+
+    return {
+      followersCount,
+      followingCount,
+    };
+  } catch (error) {
+    console.error(
+      "Error al obtener los contadores de seguidores y seguidos:",
+      error
+    );
+    return {
+      followersCount: 0,
+      followingCount: 0,
+    };
+  }
 };
 
 export const updateUserProfilePhoto = async (id, profilePhotoUrl) => {
@@ -99,4 +125,76 @@ export const updateUserProfilePhoto = async (id, profilePhotoUrl) => {
   await updateDoc(userRef, {
     profilePhoto: profilePhotoUrl,
   });
+};
+
+export const followUser = async (followerid, followingid) => {
+  try {
+    const followingRef = doc(
+      db,
+      collections.users,
+      followerid,
+      collections.following,
+      followingid
+    );
+    await setDoc(followingRef, { id: followingid });
+
+    const followerRef = doc(
+      db,
+      collections.users,
+      followingid,
+      collections.followers,
+      followerid
+    );
+    await setDoc(followerRef, { id: followerid });
+
+    console.log(`${followerid} ahora sigue a ${followingid}`);
+  } catch (error) {
+    console.error("Error al seguir al usuario:", error);
+  }
+};
+
+export const unfollowUser = async (followerId, followingId) => {
+  try {
+    const followingRef = doc(
+      db,
+      collections.users,
+      followerId,
+      collections.following,
+      followingId
+    );
+    await deleteDoc(followingRef);
+
+    const followerRef = doc(
+      db,
+      collections.users,
+      followingId,
+      collections.followers,
+      followerId
+    );
+    await deleteDoc(followerRef);
+
+    console.log(`${followerId} ha dejado de seguir a ${followingId}`);
+  } catch (error) {
+    console.error("Error al dejar de seguir al usuario:", error);
+  }
+};
+
+export const isFollowingUser = async (followerid, followingid) => {
+  try {
+    const currentUserRef = doc(db, "users", followerid);
+
+    const currentUserDoc = await getDoc(currentUserRef);
+
+    if (currentUserDoc.exists()) {
+      const currentUserData = currentUserDoc.data();
+
+      return currentUserData.following.includes(followingid);
+    } else {
+      console.warn("El usuario autenticado no existe en la base de datos");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error al verificar si el usuario sigue a otro:", error);
+    return false;
+  }
 };

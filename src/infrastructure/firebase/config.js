@@ -15,7 +15,9 @@ const firebaseConfig = {
 
 export const collections = {
   users: "users",
-  posts: "posts"
+  posts: "posts",
+  following: "following",
+  followers: "followers"
 }
 
 const app = initializeApp(firebaseConfig);
