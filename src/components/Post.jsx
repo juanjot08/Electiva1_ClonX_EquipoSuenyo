@@ -63,7 +63,7 @@ const Post = ({ post }) => {
         >
           <span className="post-author">{profileInfo.name}</span>
           <span className="post-author-user">{"@" + profileInfo.userName}</span>
-          <span className="post-time">{new Date(post.publishDate.seconds).toLocaleString()}</span>
+          <span className="post-time">{new Date(post.publishDate.seconds * 1000).toLocaleString()}</span>
         </div>
       </div>
       <div className="post-content-container">
