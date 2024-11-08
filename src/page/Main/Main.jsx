@@ -16,7 +16,7 @@ export const BaseLayout = () => {
   const user = getLogedUserInfo();
 
   return (
-    <ColumnContainer gaps={["2%"]} widths={["30%", "30%", "30%"]}>
+    <ColumnContainer gaps={["2%"]} widths={["30%", "40%", "30%"]}>
       <div className="sidebar-container">
         <SideBar />
         <ToolTips content={<LargeButton label="Cerrar Sesión" fn={() => logOutUser()}/>}>

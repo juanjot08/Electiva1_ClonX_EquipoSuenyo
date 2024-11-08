@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUsersByName } from "../../infrastructure/firebase/repositories/user.repository";
 import { Card } from "../../components/Card";
 import NotFoundMessage from "../../components/NotFound";
 import { routes } from "../../constants/routes";
+import { AuthContext } from "../../authentication/contexts/AuthContext";
 
 export const SearchUsers = () => {
   const { userName } = useParams(); // Obtiene el nombre de usuario desde los parámetros
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [reFetch, setRefetch] = useState(false)
+
+  const { getLogedUserInfo } = useContext(AuthContext);
+  const logedUser = getLogedUserInfo();
 
   const navigate = useNavigate();
 
@@ -32,7 +37,7 @@ export const SearchUsers = () => {
     };
 
     fetchUsers();
-  }, [userName]);
+  }, [userName, reFetch]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -58,10 +63,13 @@ export const SearchUsers = () => {
       {users.map((user) => (
         <div key={user.id} style={{ marginBottom: "15px" }}>
           <Card
+            key={user.id}
             image={user.profilePhoto}
             username={user.name}
             usertag={user.userName}
-            fet
+            currentId={logedUser.id}
+            targetId={user.id}
+            reFetchFunction={() => setRefetch(!reFetch)}
           />
         </div>
       ))}
