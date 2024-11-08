@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ColumnContainer } from "../../components/ColumnContainer";
 import "./styles/Profile.css";
 import { ProfileIcon } from "../../components/ProfileIcon";
-import { LargeButton } from "../../components/Buttons";
+import { FollowButton, LargeButton } from "../../components/Buttons";
 import Post from "../../components/Post";
 import { routes } from "../../constants/routes";
 import { AuthContext } from "../../authentication/contexts/AuthContext";
@@ -131,15 +131,7 @@ export const ProfileUserPage = () => {
                   }}
                 />
               ) : (
-                <LargeButton
-                  label="Seguir"
-                  styleType="secondary"
-                  customStyles={{
-                    height: "40px",
-                    width: "150px",
-                    marginTop: "50px",
-                  }}
-                />
+                <FollowButton currentUser={logedUser.id} targetUser={profileInfo.id} />
               )}
             </div>
             <div className="profile-details">
@@ -150,7 +142,7 @@ export const ProfileUserPage = () => {
                 {profileInfo.registerDate.year}
               </p>
               <p>
-                <a
+                {/* <a
                   style={{ cursor: "pointer" }}
                   onClick={() => navigate("following")}
                 >
@@ -161,7 +153,7 @@ export const ProfileUserPage = () => {
                   onClick={() => navigate("followers")}
                 >
                   {profileInfo.followers.length} Seguidores
-                </a>
+                </a> */}
               </p>
             </div>
           </div>
