@@ -4,16 +4,9 @@
     grid-template-columns: 70% auto;
 }
 
-#custom_card_container {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    gap: 20px;
-}
-
 #card_data_container {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .card_text_container {
